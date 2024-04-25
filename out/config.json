@@ -1,0 +1,8 @@
+{
+  "AccessKeyId": "your AccessKeyId",
+  "AccessKeySecret": "your AccessKeySecret",
+  "Endpoint": "your Endpoint",
+  "Bucket": "your Bucket",
+  "directory": "The directory stored in the bucket",
+  "port":"2001"
+}
