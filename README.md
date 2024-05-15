@@ -2,7 +2,7 @@
 
 使用
 ```golang
-    go build =o ./out/xxx.sh
+    go build -o ./out/xxx.sh
 ```
 编译为对应的文件
 
