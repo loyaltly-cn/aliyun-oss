@@ -1,7 +1,5 @@
 # 阿里云OSS
 
-
-
 ## 启动
 
 > 运行 oss.sh / oss.exe 会自动读取config.json的内容
@@ -20,11 +18,11 @@
 
 > 成功启动通过 ip:port/uri 访问 API
 
-| uri   | method | param |Content-Type | response | desc   |
-|-------| ------ | ----- | -------- |----------|--------|
-| upload| POST |file:*multipart.FileHeader| multipart/form-data| message:string| 上传文件   |
-| single|DELETE| path:string| application/json| message:string| 删除单文件  |
-| multiple| DELETE|paths:[]string|application/json| message:string| 删除多个文件 |
+| uri   | method | param |Content-Type | response       | desc   |
+|-------| ------ | ----- | -------- |----------------|--------|
+| upload| POST |file:*multipart.FileHeader| multipart/form-data| path:string    | 上传文件   |
+| single|DELETE| path:string| application/json| message:string | 删除单文件  |
+| multiple| DELETE|paths:[]string|application/json| message:string | 删除多个文件 |
 
 
 > 文件只能单张上传
