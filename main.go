@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"oss/io"
 	"oss/sdk"
+	"oss/utils"
 )
 
 type Path struct {
@@ -47,18 +48,8 @@ func upload(c *gin.Context) {
 }
 
 func handler(uri string) string {
-	prefix := fmt.Sprintf("%s%s.%s", getProtocol(endpoint), bucket, getDomain(endpoint))
+	prefix := fmt.Sprintf("%s%s.%s", utils.GetProtocol(endpoint), bucket, utils.GetDomain(endpoint))
 	return prefix + "/" + uri
-}
-
-func getProtocol(endpoint string) string {
-	protocolEnd := len("https://")
-	return endpoint[:protocolEnd]
-}
-
-func getDomain(endpoint string) string {
-	protocolEnd := len("https://")
-	return endpoint[protocolEnd:]
 }
 
 func single(c *gin.Context) {
@@ -66,7 +57,7 @@ func single(c *gin.Context) {
 	body := Path{}
 	_ = json.Unmarshal(b, &body)
 	c.JSON(http.StatusOK, gin.H{
-		"message": fmt.Sprintf("%s deleted!", sdk.Single(body.Path)),
+		"message": fmt.Sprintf("%s deleted!", sdk.Single(utils.ExtractFromURL(body.Path))),
 	})
 }
 
@@ -75,7 +66,7 @@ func multiple(c *gin.Context) {
 	body := Paths{}
 	_ = json.Unmarshal(b, &body)
 	c.JSON(http.StatusOK, gin.H{
-		"message": fmt.Sprintf("%s deleted!", sdk.Multiple(body.Paths)),
+		"message": fmt.Sprintf("%s deleted!", sdk.Multiple(utils.Range(body.Paths))),
 	})
 }
 

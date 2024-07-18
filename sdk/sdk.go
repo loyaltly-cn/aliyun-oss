@@ -36,7 +36,6 @@ func Upload(fileHeader *multipart.FileHeader) string {
 	defer file.Close()
 
 	uri := utils.CreateFileName(fileHeader.Filename)
-
 	err = bucket.PutObject(uri, file)
 
 	if err != nil {
